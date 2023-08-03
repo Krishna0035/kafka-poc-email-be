@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
+import java.util.List;
+
 @Configuration
 public class KafkaConfig {
 
@@ -62,8 +64,43 @@ public class KafkaConfig {
     }
 
 
+
+    @Bean
+    public NewTopic createEmailTopic1(){
+        return TopicBuilder
+                .name("email_topic_1")
+                .build();
+    }
+
+    @Bean
+    public NewTopic createEmailTopic2(){
+        return TopicBuilder
+                .name("email_topic_2")
+                .build();
+    }
+
+    @Bean
+    public NewTopic createEmailTopic3(){
+        return TopicBuilder
+                .name("email_topic_3")
+                .build();
+    }
+
+    @Bean
+    public List<NewTopic> createEmailTopicList(){
+        return List.of(TopicBuilder
+                .name("email_topic_new_1")
+                .build(),TopicBuilder
+                .name("email_topic_new_2")
+                .build(),TopicBuilder
+                .name("email_topic_new_3")
+                .build());
+    }
+
     @Bean
     public Gson getGson(){
         return new Gson();
     }
+
+
 }
